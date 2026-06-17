@@ -25,7 +25,8 @@ class DiaJogo(models.Model):
         verbose_name_plural = 'Dia Jogos'
 
     def __str__(self):
-        return str(self.data)
+    
+        return self.data.strftime('%d/%m/%Y')
 
 
 

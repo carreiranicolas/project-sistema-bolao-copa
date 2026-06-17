@@ -24,4 +24,4 @@ class Palpite(models.Model):
         verbose_name_plural = 'Palpites'
 
     def __str__(self):
-        f'{self.usuario.username} - {self.jogo}'
+        return f'{self.usuario.username} - {self.jogo}'
