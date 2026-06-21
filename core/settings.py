@@ -123,6 +123,11 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
+# ESTA É A LINHA CRUCIAL:
+STATICFILES_DIRS = [
+    BASE_DIR / 'core' / 'static',
+]
+
 MEDIA_URL = 'media/'
 
 MEDIA_ROOT = BASE_DIR / 'media/'

@@ -7,7 +7,7 @@ from django.core.exceptions import ValidationError
 class Time(models.Model):
     nome = models.CharField(max_length=45, unique=True)
     sigla = models.CharField(max_length=3, unique=True)
-    bandeira = models.ImageField(upload_to='bandeiras/')
+    bandeira = models.ImageField(upload_to='bandeiras/', blank=True, null=True)
 
     def __str__(self):
         return self.nome

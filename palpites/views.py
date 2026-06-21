@@ -1,5 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.utils import timezone
+from django.contrib.auth.models import User
+from django.db.models import Sum
 from campeonato.models import Jogo, Configuracao
 from .models import Palpite
 from .forms import PalpiteForm
@@ -83,4 +85,13 @@ def meus_palpites(request):
     return render(request, 'palpites/meus_palpites.html')
 
 def ranking(request):
-    return render(request, 'palpites/ranking.html')
+
+    ranking = (
+        User.objects.
+        annotate(
+            total_pontos = Sum('palpite__pontuacao')
+        )
+        .order_by('-total_pontos')
+    )
+
+    return render(request, 'palpites/ranking.html', {'ranking': ranking})
